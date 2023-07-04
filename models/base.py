@@ -27,7 +27,8 @@ class BaseModel:
         """instantiation of new BaseModel Class"""
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-    
+
+
     def bm_update(self, name, value):
         """
             updates the basemodel and sets the correct attributes
