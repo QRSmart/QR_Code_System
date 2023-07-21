@@ -25,12 +25,6 @@ app.add_middleware(
 )
 
 
-@app.get("/")
-def home():
-    return {
-            "status" : True,
-            "message" : "Hello World!"
-        }
 
 """
 URL QR_codes Routes
@@ -73,8 +67,9 @@ def create_urlLink():
 
 
 
-@app.get("/about")
-def about():
-    return {"About Page"}
+"""
+Ajouter vos propres routes
+"""
+
 
 
