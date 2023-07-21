@@ -1,5 +1,3 @@
 #!/usr/bin/python3
 import os
-from models import storage
-
-
+from api.v1.app import app
