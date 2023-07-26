@@ -30,7 +30,7 @@ class BaseModel:
     """
         La classe de Base de tous les models pour permettre une attribution des proprietes et methodes communes a toutes les classe
         ex :
-            Id (Colonne commune a toutes les tables ici etant une propriete)
+        Id (Colonne commune a toutes les tables ici etant une propriete)
     """
     
     id : Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True )

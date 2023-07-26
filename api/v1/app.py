@@ -9,14 +9,19 @@ from models import storage
 from models.qr_codes import QRCodes, QRTypes
 from models.url_links import UrlLinks
 from models.business_card import BusinessCardLinks
-
+import uvicorn
 app = FastAPI()
+#Pour rendre les parametres d'une querry optionel
+from typing import Optional
+
+from pydantic import BaseModel
 
 origins = [
     "http://localhost",
    "http://localhost:8080",
     "http://localhost:8081",
 ]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -68,9 +73,19 @@ def create_urlLink():
 Ajouter vos propres routes
 """
 @app.get("/business_card")
-def create_businessCard():
+async def create_businessCard():
     """
-    Create qr_code from business card
+    utilisation du async ici pour :
+    -exécuter des coroutines Python simultanément et avoir un contrôle total sur leur exécution ;
+    -effectuer des E/S réseau et IPC ;
+    -contrôler les sous-processus ;
+    -répartir les tâches via des files d'attente ;
+    -synchroniser le code concurrent ;
+    En gros, le mot async permet d'avoir le controle sur les données manipulées
+    """
+
+    """
+    Creation d'un tableau temporaire pour stocker le qr_code d'une business card
     
     """
     card_data= [
@@ -92,3 +107,53 @@ def create_businessCard():
     qr_code_id=qr_code.id)
     businesscard_link.save()
 
+    """
+    test => Pour apprendre le frameword
+    """
+
+@app.get("/component/{component_id}")
+async def get_component(component_id:int):
+    #operations
+    return {
+        "component_id": component_id
+    }
+
+@app.get("/component/")
+
+async def read_component(number:int, text:Optional[str]):#str params optioal
+    return {
+        "number": number,
+        "text": text
+    }
+class CoordIn(BaseModel):
+    password: str
+    lat:float
+    lon:float
+    zoom:Optional[int]=None
+    description:Optional[int]=None
+
+class CoordOut(BaseModel):  
+    lat:float
+    lon:float
+    zoom:Optional[int] = None
+    zoom:Optional[int]=None
+    description:Optional[int]=None
+    
+@app.post("/position/", response_model=CoordOut,
+          response_model_include={
+              'description'
+          })
+async def make_position(coord:CoordIn):
+    # db write completed
+    return coord #retour sous forme de dictionnaire
+    
+@app.post("/position/{priority}/")
+async def make_position(priority:int ,coord:CoordIn, value:Optional[bool]):
+    # db write completed
+    return {"priority":priority, "new coord": coord.dict(), "value":value}#retour sous forme de dictionnaire  
+    
+#Pour le lancement => A tester
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1" , port=8000)
+    
+    
