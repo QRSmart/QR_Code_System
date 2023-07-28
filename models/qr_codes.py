@@ -2,14 +2,15 @@
 """
 QR_Codes Class from Models Module
 """
-import os
-from typing import Literal
-import enum
-from models.base import BaseModel, Base
+from typing import Literal, Union
+from models.base import BaseModel, Base, PyBaseModel
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 from uuid import uuid4
+from pydantic import BaseModel as PydanticBaseModel
+import os
+import enum
 import models
 import qrcode
 
@@ -38,11 +39,11 @@ class QRCodes(BaseModel, Base):
     """
         Les proprietes qui suivent definissent les colonnes de la tables.
     """
-    short_code : Mapped[str] = mapped_column(String(255), unique=True, primary_key=True)
-    code_state : Mapped[QRState]
-    code_type : Mapped[QRTypes]
-    filename : Mapped[str] = mapped_column(String(255), nullable=True)
-    code_link : Mapped[str] = mapped_column(String(255), nullable=True)
+    short_code: Mapped[str] = mapped_column(String(255), unique=True, primary_key=True)
+    code_state: Mapped[QRState]
+    code_type: Mapped[QRTypes]
+    filename: Mapped[str] = mapped_column(String(255), nullable=True)
+    code_link: Mapped[str] = mapped_column(String(255), nullable=True)
     
     
     def __init__(self, props = None):
@@ -53,7 +54,7 @@ class QRCodes(BaseModel, Base):
         """
         super().__init__(props)
         self.short_code  = str(uuid4())
-        self.code_state = "static"
+        self.code_state = QRState.STATIC
 
     def generate_qrcode(self, url, qr_type):
         self.code_type = qr_type
@@ -72,3 +73,31 @@ class QRCodes(BaseModel, Base):
             return models.storage.get_filter('QRCodes', {"short_code" : self.short_code })
         else :
             return models.storage.get_filter('QRCodes', {"short_code" : filter_val })
+
+
+class QRCodesBase(PydanticBaseModel):
+    """
+        Schema de base pour les requetes
+    """
+    pass
+    
+class QRCodesCreate(QRCodesBase):
+    """
+        Schema a suivre pour les requetes de QRCodes
+    """
+    nature: Union[str, QRState.STATIC] = QRState.STATIC
+    type_code: str
+
+
+class QRCodesScheme(PyBaseModel, QRCodesBase):
+    """
+        Schema a suivre pour utiliser les qr_codes dans les requettes
+    """
+    short_code: str
+    code_state : str
+    code_type : str
+    filename : str
+    code_link : str
+
+    class Config:
+        orm_mode : True

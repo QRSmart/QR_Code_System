@@ -8,15 +8,17 @@ Les models qui sont representes par des classes vont etre manipules en leur seur
 
 """
 
-import os
-import json
-import models
 from uuid import uuid4, UUID
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped, mapped_column
+from typing import Union
+from pydantic import BaseModel
+import os
+import json
+import models
 #Base = declarative_base()
 
 class Base(DeclarativeBase):
@@ -66,3 +68,7 @@ class BaseModel:
         models.storage.new(self)
         models.storage.save()
     
+
+class PyBaseModel(BaseModel):
+    id : int
+    created_at : Union[datetime, datetime.utcnow()] = datetime.utcnow()
