@@ -6,6 +6,12 @@ Tous les models qui seront cree vont herites de cette classe avant d'en disposer
 Les models qui sont representes par des classes vont etre manipules en leur seur grace a un ORM (Object Relationship Manager) ici qui est sqlalchemy
 
 
+Classe Base Models de tous les models
+Elle regroupe une classe de base qui serait une classe qui regroupera les proprietes et methode commune a tout les models. ELle fait donc gagner du temps en evitant les repetitions.
+Tous les models qui seront cree vont herites de cette classe avant d'en disposer les fonction communes
+Les models qui sont representes par des classes vont etre manipules en leur seur grace a un ORM (Object Relationship Manager) ici qui est sqlalchemy
+
+
 """
 
 from uuid import uuid4, UUID
