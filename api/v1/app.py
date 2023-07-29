@@ -30,6 +30,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+
 """
 URL QR_codes Routes
 """
@@ -46,12 +48,11 @@ def get_urlLink(url_id: int, q: Union[str, None] = None):
             "data" : url
         }
 
-@app.get("/url")
+@app.post("/url")
 def create_urlLink():
     """
     Cree un lien qrcode
     """
-    print("url_link")
     link_to_code = "https://facebook.com"
     qr_code = QRCodes()
     qr_code.generate_qrcode(link_to_code, QRTypes.URL_LINKS)

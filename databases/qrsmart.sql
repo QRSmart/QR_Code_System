@@ -1,7 +1,7 @@
 CREATE TABLE `QR_codes` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`short_code` varchar(255) NOT NULL UNIQUE,
-	`type` ENUM('static','dynamic')  NOT NULL DEFAULT 'static',
+	`code_type` ENUM('static','dynamic')  NOT NULL DEFAULT 'static',
 	`filename` TEXT NOT NULL UNIQUE,
 	`user_id` int NOT NULL,
 	`created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -32,7 +32,3 @@ CREATE TABLE `users` (
 ALTER TABLE `QR_codes` ADD CONSTRAINT `QR_codes_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`);
 
 ALTER TABLE `url_links` ADD CONSTRAINT `url_links_fk0` FOREIGN KEY (`qr_code_id`) REFERENCES `QR_codes`(`id`);
-
-
-
-
