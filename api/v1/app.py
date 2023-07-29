@@ -10,6 +10,7 @@ from models.qr_codes import QRCodes, QRTypes
 from models.url_links import UrlLinks
 from models.business_card import BusinessCardLinks
 import uvicorn
+
 app = FastAPI()
 #Pour rendre les parametres d'une querry optionel
 from typing import Optional
