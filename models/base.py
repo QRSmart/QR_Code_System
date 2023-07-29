@@ -77,4 +77,5 @@ class BaseModel:
 
 class PyBaseModel(BaseModel):
     id : int
-    created_at : Union[datetime, datetime.utcnow()] = datetime.utcnow()
+    #created_at : Union[datetime, datetime.utcnow()] = datetime.utcnow()
+    created_at : str

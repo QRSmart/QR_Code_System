@@ -2,10 +2,10 @@
 """
 QR_Codes Class from Models Module
 """
-from typing import Literal, Union
+from typing import Literal, Union, Optional
 from models.base import BaseModel, Base, PyBaseModel
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, JSON
 from sqlalchemy.orm import Mapped, mapped_column
 from uuid import uuid4
 from pydantic import BaseModel as PydanticBaseModel
@@ -35,16 +35,18 @@ class QRCodes(BaseModel, Base):
     #qr_types = Literal["static", "dynamic"]
 
     __tablename__ = 'qr_codes' #definition du nom de la table tres important
+    __table_args__ = {"mysql_engine": "InnoDB"}
+
 
     """
         Les proprietes qui suivent definissent les colonnes de la tables.
     """
     short_code: Mapped[str] = mapped_column(String(255), unique=True, primary_key=True)
-    code_state: Mapped[QRState]
-    code_type: Mapped[QRTypes]
+    qrcode_state: Mapped[QRState]
+    qrcode_type: Mapped[QRTypes]
     filename: Mapped[str] = mapped_column(String(255), nullable=True)
-    code_link: Mapped[str] = mapped_column(String(255), nullable=True)
-    
+    qrcode_link: Mapped[str] = mapped_column(String(255), nullable=True)
+    design : Mapped[Optional[str]] = mapped_column(type_=JSON, nullable=True)
     
     def __init__(self, props = None):
         """
@@ -54,17 +56,19 @@ class QRCodes(BaseModel, Base):
         """
         super().__init__(props)
         self.short_code  = str(uuid4())
-        self.code_state = QRState.STATIC
+        self.qrcode_state = QRState.STATIC
 
-    def generate_qrcode(self, url, qr_type):
-        self.code_type = qr_type
+    def generate_qrcode(self, url, qr_type, design = None):
+        if design:
+            self.design = design
+        self.qrcode_type = qr_type
         result_code = qrcode.make(url)
         # print(__file__)
         self.filename = f"qr_code_{self.short_code}.png"
         img_path = os.path.join("output","qr_codes", self.filename)
         result_code.save(img_path)
 
-        if self.code_type == QRTypes.URL_LINKS:
+        if self.qrcode_type == QRTypes.URL_LINKS:
             self.code_link = url
 
 
@@ -85,8 +89,9 @@ class QRCodesCreate(QRCodesBase):
     """
         Schema a suivre pour les requetes de QRCodes
     """
-    nature: Union[str, QRState.STATIC] = QRState.STATIC
-    type_code: str
+    qrcode_state: QRState = QRState.STATIC
+    qrcode_type: str
+    design : str = None
 
 
 class QRCodesScheme(PyBaseModel, QRCodesBase):
@@ -94,8 +99,8 @@ class QRCodesScheme(PyBaseModel, QRCodesBase):
         Schema a suivre pour utiliser les qr_codes dans les requettes
     """
     short_code: str
-    code_state : str
-    code_type : str
+    qrcode_state : str
+    qrcode_type : str
     filename : str
     code_link : str
 
