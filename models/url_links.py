@@ -20,7 +20,8 @@ class UrlLinks(BaseModel, Base):
 
     __tablename__ = 'url_links'
     link : Mapped[str] = mapped_column(String(255))
-    qr_code_id : Mapped[int] = mapped_column(ForeignKey("qr_codes.id")) 
+    #qr_code_id : Mapped[int] = mapped_column(ForeignKey("qr_codes.id")) 
+    qr_code_id : Mapped[int] = mapped_column() 
     qr_code = relationship("QRCodes")
 
     def __init__(self, link, props = None):
