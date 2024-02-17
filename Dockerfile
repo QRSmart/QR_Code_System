@@ -58,7 +58,7 @@ RUN npm install && npm run build
 WORKDIR /app
 
 # Switch to the non-privileged user to run the application.
-USER appuser
+USER root
 
 # Expose the port that the application listens on.
 EXPOSE 5000
