@@ -61,7 +61,7 @@ WORKDIR /app
 USER root
 
 # Expose the port that the application listens on.
-EXPOSE 5000
+EXPOSE 80
 
 # Run the application.
-CMD python3 run.py
+CMD ["python3", "run.py"]
