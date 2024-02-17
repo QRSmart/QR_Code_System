@@ -49,7 +49,7 @@ COPY python_env /app/.env
 
 WORKDIR /app/web
 
-RUN npm install && npx tailwindcss -i ./static/css/main.css -o ./static/css/style.css && npm run build
+RUN npm install && npx tailwindcss -i ./static/css/main.css -o ./static/css/style.css
 
 WORKDIR /app/frontend
 
