@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}" />
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% endblock %}
+</head>
+<body>
+    <div class="navbar" id="navbar">
+        <nav class="body-font">
+            <h2 class="heading-2">QR<span class="text-qr-color">Smart</span></h2>
+            <ul>
+                <a>About Us</a>
+                <a>FAQ</a>
+                <a>Contact</a>
+                <a href="/docs" target="_blank">API Docs</a>
+            </ul>
+            <div class="connexion">
+                <a class="btn-default" href="/login">Login</a>
+                <a class="btn-primary">Signup</a>
+
+            </div>
+        </nav>
+    </div>
+    <main id="content" class="page-content">
+        {% block content %}{% endblock %}
+    </main>
+    <div id="footer">
+        {% block footer %}
+        <!-- &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>. -->
+        {% endblock %}
+    </div>
+</body>
+</html>

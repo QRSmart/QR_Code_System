@@ -42,6 +42,15 @@ class DBStorage:
         
         if os.getenv('DATABASE_MODE') == 'test':
             self.__engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
+        elif os.getenv('DATABASE_MODE') == 'postgre':
+            self.__engine = create_engine(
+            'postgresql+psycopg2://{}:{}@{}/{}'.format(
+                os.getenv('DATABASE_USERNAME'),
+                os.getenv('DATABASE_PASSWORD'),
+                os.getenv('DATABASE_HOSTNAME'),
+                os.getenv('DATABASE_NAME'),
+            )
+            )
         else:
             self.__engine = create_engine(
             'mysql+mysqldb://{}:{}@{}/{}'.format(

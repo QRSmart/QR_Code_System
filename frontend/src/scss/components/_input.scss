@@ -1,0 +1,10 @@
+
+.input-form {
+    display: flex;
+    min-width: 300px;
+    padding: $spacing-xs $spacing-xbase;
+    align-items: center;
+    gap: $spacing-xbase;
+    border-radius: $radius-button;
+    border: 1px solid $qr-gray-3;
+}

@@ -21,7 +21,7 @@ from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped, mapped_column
 from typing import Union
-from pydantic import BaseModel
+from pydantic import BaseModel as BasePyModel
 import os
 import json
 import models
@@ -73,9 +73,11 @@ class BaseModel:
         """
         models.storage.new(self)
         models.storage.save()
-    
+    def __repr__(self) -> str:
+        print(self.__dict__)
 
-class PyBaseModel(BaseModel):
+class PyBaseModel(BasePyModel):
     id : int
     #created_at : Union[datetime, datetime.utcnow()] = datetime.utcnow()
     created_at : str
+    updated_at : str

@@ -1,0 +1,19 @@
+
+.btn-default {
+    @apply inline-flex justify-center items-center;
+    padding: $spacing-xs $spacing-lg;
+    gap: $spacing-xbase;
+    border-radius: $radius-button;
+    border: 0.5px solid $qr-dark;
+    cursor: pointer;
+}
+.btn-primary {
+    @apply inline-flex justify-center items-center shadow-btn;
+    padding: var(--spacing-xs) var(--spacing-lg);
+    gap: var(--spacing-xbase);
+    border-radius: $radius-button;
+    border-radius: $radius-button;
+    background: $qr-primary;
+    color: $qr-white;
+    cursor: pointer;
+}

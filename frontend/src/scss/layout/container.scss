@@ -1,0 +1,43 @@
+
+.default-ctn {
+    @apply px-14 lg:px-20 w-full;
+}
+
+
+
+
+.inner-container {
+
+}
+
+.section-title {
+    @apply  text-4xl p-2 w-full text-center;
+    //position: relative;
+    /*&--left {
+        @apply text-left;
+        &::before {
+            content : '';
+            height: 3px;
+            position: absolute;
+            @apply w-20 primary-stand-color left-0;
+            top: 1rem;
+            border-radius: 0 5px 5px 0px;
+        }
+    }*/
+}
+
+.icon-size {
+    @apply h-6 w-6;
+
+    &-sm {
+        @apply h-4 w-4;
+    }
+}
+
+.spot-tag {
+    @apply rounded-full py-1 px-2 text-xs bg-rose-100 ;
+}
+
+.border-1 {
+    border-width: 1px;
+}

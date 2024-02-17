@@ -1,0 +1,27 @@
+.navbar {
+    @apply flex w-full flex-col items-start;
+    padding: var(--spacing-xbase) 70px;
+    gap: var(--spacing-xbase, 10px);
+    nav {
+        @apply flex justify-between items-center self-stretch;
+        h2 {
+            @apply flex justify-center items-center;
+            padding: 10px 0px;
+            gap: 2px;
+        }
+        ul {
+            @apply flex items-center gap-2;
+            a {
+                @apply flex flex-col justify-center items-center text-center;
+                padding: 5px 10px;
+                gap: var(--spacing-none);
+                color: var(--qr-gray-4);
+                cursor: pointer;
+            }
+        }
+        .connexion {
+            @apply flex items-start;
+            gap: var(--spacing-sm);
+        }
+    }
+}

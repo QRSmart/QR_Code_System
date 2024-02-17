@@ -13,7 +13,9 @@ import os
 import enum
 import models
 import qrcode
-
+import json
+from qrcode.image.svg import SvgPathImage, SvgImage
+from qrcode.image.styledpil import StyledPilImage
 
 class QRState(enum.Enum):
     STATIC = "static"
@@ -56,20 +58,50 @@ class QRCodes(BaseModel, Base):
         """
         super().__init__(props)
         self.short_code  = str(uuid4())
-        self.qrcode_state = QRState.STATIC
+        #self.qrcode_state = QRState.STATIC
 
-    def generate_qrcode(self, url, qr_type, design = None):
+    def generate_qrcode(self, url, qr_state, qr_type, design = None):
+        """
+        Generate the qrcode based on the custumizations
+        """
+        self.qrcode_type = qr_type
+        if qr_state == "static":
+            self.qrcode_state = QRState.STATIC
         if design:
             self.design = design
-        self.qrcode_type = qr_type
-        result_code = qrcode.make(url)
-        # print(__file__)
-        self.filename = f"qr_code_{self.short_code}.png"
-        img_path = os.path.join("output","qr_codes", self.filename)
-        result_code.save(img_path)
+        #custom = json.loads(design)
 
+        #result_code = qrcode.make(url)
+
+        qr = qrcode.QRCode(
+            version = 1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=4,
+        )
+        qr.add_data(url)
+        #qr.make(fit=True)
+        img_types = { "png" : StyledPilImage, "svg" : SvgImage }
+        self.filename = f"qr_code_{self.short_code}"
+        for img_type in img_types:
+            img_output =  qr.make_image(image_factory = img_types[img_type])
+            #img_svg =  qr.make_image(image_factory = SvgPathImage)
+            file_to_save_name = f"{self.filename}.{img_type}"
+            img_path = os.path.join("output","qr_codes", file_to_save_name)
+            img_output.save(img_path)
+            
+        # print(__file__)
+        # img_path = os.path.join("output","qr_codes", self.filename)
+        # result_code.save(img_path)
+        url_link = self.generate_access_link(url)
+        
+
+    def generate_access_link(self, url):
         if self.qrcode_type == QRTypes.URL_LINKS:
             self.code_link = url
+            return url
+        
+        
 
 
     def get_by_short_code(self, filter_val=None):
@@ -106,3 +138,9 @@ class QRCodesScheme(PyBaseModel, QRCodesBase):
 
     class Config:
         orm_mode : True
+
+
+class QRCodeDesign(PydanticBaseModel):
+    pattern : str
+    eye : str
+    color : dict[str, str]
