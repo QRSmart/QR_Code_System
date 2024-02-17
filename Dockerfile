@@ -32,7 +32,7 @@ RUN adduser \
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
 # Leverage a bind mount to requirements.txt to avoid having to copy them into
 # into this layer.
-RUN apt-get update && apt-get install -y default-libmysqlclient-dev pkg-config gcc
+RUN apt-get update && apt-get install -y default-libmysqlclient-dev pkg-config gcc musl-dev postgresql-dev
 
 # Get NodeJS
 COPY --from=node:18.14.0-slim /usr/local/bin /usr/local/bin
