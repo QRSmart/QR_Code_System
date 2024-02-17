@@ -45,12 +45,14 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 # Copy the source code into the container.
 COPY . .
+COPY python_env /app/.env
 
 WORKDIR /app/web
 
 RUN npm install && npx tailwindcss -i ./static/css/main.css -o ./static/css/style.css && npm run build
 
 WORKDIR /app/frontend
+
 RUN npm install && npm run build
 
 WORKDIR /app
