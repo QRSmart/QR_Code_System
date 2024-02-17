@@ -1,0 +1,28 @@
+
+.login-page {
+
+    main {
+        //padding: 0 $padding-section;
+        height: 100vh;
+        @apply flex items-start justify-start;
+        color: $qr-white;
+        .form-illus {
+            background: $qr-primary;
+            gap: $spacing-base;
+        }
+        .formCtn {
+            padding: $spacing-xlg $spacing-base;
+            gap: 70px;
+            .inner-form {
+                gap: $spacing-md;
+                .formInput {
+                    @apply flex flex-col items-start;
+                    gap: $spacing-base;
+                }
+            }
+            .formInput {
+
+            }
+        }
+    }
+}

@@ -1,0 +1,6 @@
+fastapi[all]
+uvicorn
+sqlalchemy
+qrcode[pil]
+jinja2
+psycopg2

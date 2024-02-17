@@ -1,0 +1,53 @@
+body {
+    font-family: $f-family;
+}
+$btn-sizes : (.875rem, 1.25rem, .015625rem);
+$display-font-props: ( "1": (7.5rem, 7.5rem), "2": (6rem, 6rem), "3": (4.75rem, 5.25rem), "4": (4rem, 4.5rem), "5": (3rem, 3.5rem)) ;
+$headline-font-props : ("1": (2.5rem, 3rem), "2": (2rem, 2.5rem), "3": (1.5rem, 1.75rem), "4": (1.25rem, 1.5rem), "5": (1rem, 1.25rem), "sub": (1.5rem, 2rem));
+$body-font-props : ("lg": (1rem, 1.25rem, .009375rem), "md": (1rem, 1.5rem, .015625rem), "foot": (.875rem, 1.25rem, .025rem), "caption" : (.75rem, 1rem, .0125rem));
+@each $index, $font-prop in $display-font-props {
+	//h#{$index},
+	.dsp-#{$index} {
+		font-size: nth($font-prop, 1);
+		line-height: nth($font-prop, 2); 
+        margin: 0;
+        padding: 0;
+		font-weight: 300;
+        box-sizing : border-box;
+		&--sbold {
+			font-weight: 600;
+		}
+	}
+	
+}
+
+@each $index, $font-prop in $headline-font-props {
+	//h#{$index},
+	.hdl-#{$index} {
+		font-size: nth($font-prop, 1);
+		line-height: nth($font-prop, 2); 
+        margin: 0;
+        padding: 0;
+		font-weight: 300;
+        box-sizing : border-box;
+		&--sbold {
+			font-weight: 600;
+		}
+	}
+}
+
+@each $index, $font-prop in $body-font-props {
+	//h#{$index},
+	.bd-#{$index} {
+		font-size: nth($font-prop, 1);
+		line-height: nth($font-prop, 2); 
+        margin: 0;
+        padding: 0;
+		font-weight: 300;
+        box-sizing : border-box;
+		&--sbold {
+			font-weight: 600;
+		}
+	}
+	
+}

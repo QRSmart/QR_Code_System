@@ -1,0 +1,23 @@
+
+.signup-page {
+    $padding-section : 3rem;
+    main {
+        padding: 0 $padding-section;
+        height: 80vh;
+        @apply flex items-center justify-center;
+
+        .formCtn {
+            @apply  h-4/5 p-5 flex flex-col gap-6 items-center;
+            & > h1 {
+                font-family: $f-family;
+                @apply text-3xl;
+            }
+            .formInput {
+
+                input {
+                    @apply outline outline-slate-400 p-2 pl-4 rounded-lg
+                }
+            }
+        }
+    }
+}
