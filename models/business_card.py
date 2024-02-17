@@ -30,7 +30,8 @@ class BusinessCardLinks(BaseModel, Base):
     photo_file :Mapped[str]=mapped_column(String(255))
     social_media : Mapped[str] = mapped_column(String(255))
     additional_info : Mapped[str] = mapped_column(String(255))
-    qr_code_id : Mapped[int] = mapped_column(ForeignKey("qr_codes.id")) 
+    #qr_code_id : Mapped[int] = mapped_column(ForeignKey("qr_codes.id")) 
+    qr_code_id : Mapped[int] = mapped_column() 
     qr_code = relationship("QRCodes")
 
     def __init__(self,name,website,social_media,additional_info,address_country,photo_file,personnal_description,address_zipcode,address_street,address_city,address_state,company_name,contact_mobile_phone,contact_mobile_phone_work,company_position,contact_email, qr_code_id, props = None):
