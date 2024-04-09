@@ -27,6 +27,8 @@ class QRTypes(enum.Enum):
     """
     URL_LINKS = "url_links"
     VIRTUAL_CARDS = "virtual_card"
+    EVENTS = "events"
+    MENU = "menu"
 
 class QRCodes(BaseModel, Base):
     """
@@ -54,7 +56,6 @@ class QRCodes(BaseModel, Base):
         """
         initialise default data to generate
         Methode d'initialisation du model
-        
         """
         super().__init__(props)
         self.short_code  = str(uuid4())

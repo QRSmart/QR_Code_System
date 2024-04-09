@@ -10,7 +10,7 @@ from sqlalchemy import create_engine, MetaData, select
 from sqlalchemy.orm import sessionmaker, scoped_session
 from models.base import Base
 from models import base
-from models import qr_codes, url_links, business_card
+from models import qr_codes, url_links, business_card, events
 
 load_dotenv()
 
@@ -23,7 +23,8 @@ class DBStorage:
         'BaseModel' : base.BaseModel,
         'QRCodes' : qr_codes.QRCodes,
         'Url' : url_links.UrlLinks,
-        'BusinessCard': business_card.BusinessCardLinks
+        'BusinessCard': business_card.BusinessCardLinks,
+        'Events': events.Events
     }
 
     """
