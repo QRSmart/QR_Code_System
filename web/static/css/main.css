@@ -169,6 +169,11 @@ button {
         box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.05);
     }
     
+    .qr-shadow-base {
+        /* qr-shadow-base */
+        box-shadow: 0px 1px 0px 0px rgba(17, 17, 26, 0.1), 0px 8px 24px 0px rgba(17, 17, 26, 0.1), 0px 16px 48px 0px rgba(17, 17, 26, 0.1);
+    }
+
     .btn-default {
         @apply inline-flex justify-center items-center;
         padding: var(--spacing-xs) var(--spacing-lg);
@@ -195,6 +200,9 @@ button {
     Common styles
 */
 
+.title-section {
+    padding: var(--spacing-base);
+}
 .title-section h2 {
     color:var(--qr-dark--second);
 }
@@ -228,6 +236,43 @@ nav ul a {
 nav .connexion {
     @apply flex items-start;
     gap: var(--spacing-sm);
+}
+
+/* Footer Design */
+footer {
+    @apply px-20 py-8 flex justify-center items-center;
+    background-color: rgb(99, 202, 4, .5);
+
+}
+.footer .inner-footer {
+    min-width: 100%;
+    @apply px-6 flex flex-col justify-center gap-4;
+
+}
+.footer .inner-footer .foot-start {
+    @apply flex justify-between items-center; 
+}
+.footer .inner-footer .foot-start .left-side{
+    @apply flex flex-col items-center justify-center;
+}
+.footer .inner-footer .foot-start .right-side {
+    @apply flex justify-end gap-4;
+}
+.footer .inner-footer .foot-start .right-side .links-ctn {
+    @apply flex flex-col justify-center items-center gap-2;
+}
+.footer .inner-footer .foot-start .right-side .links-ctn h5{
+    @apply font-semibold;
+}
+.footer .inner-footer .foot-start .right-side .links-ctn ul {
+    @apply flex flex-col justify-center items-center gap-1 list-none;
+}
+
+.footer .inner-footer .foot-end {
+    @apply flex justify-between items-center; 
+}
+.footer .inner-footer .foot-end .right-side {
+    @apply flex justify-end items-center gap-2; 
 }
 
 /* Index Design */
@@ -339,9 +384,43 @@ nav .connexion {
 
 }
 .steps-ctn {
-    
+    @apply grid grid-cols-2 content-center justify-items-center gap-y-6;
+    padding: var(--spacing-lg) 0;
 }
 .step-instance {
-    max-width: 50%;
-    @apply flex flex-col;
+    max-width: 400px;
+    @apply flex flex-col justify-center items-center gap-6;
+}
+.step-instance .illus {
+    width: 200px;
+    height: 200px;
+    @apply flex justify-center items-center;
+}
+.step-instance .illus img {
+    width: 100px;
+}
+
+.step-instance .content {
+    padding: var(--spacing-sm) var(--spacing-base);
+    background-color: rgba(240, 240, 240, .3);
+    
+    @apply qr-shadow-base rounded-sm flex flex-col gap-4;
+}
+
+.step-instance .content .header {
+    @apply flex justify-between w-full;
+}
+.step-instance .content .header h5{
+    @apply font-semibold;
+}
+.step-instance .content .header h6{
+    @apply text-qr-color font-semibold;
+}
+
+.step-instance .content p{
+    @apply text-qr-gray-4;
+}
+
+.step-reverse {
+    flex-direction: column-reverse;
 }
