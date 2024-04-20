@@ -15,25 +15,65 @@
         <nav class="body-font">
             <h2 class="heading-2">QR<span class="text-qr-color">Smart</span></h2>
             <ul>
-                <a>About Us</a>
-                <a>FAQ</a>
-                <a>Contact</a>
+                <a href="#">Plans</a>
+                <a href="#">FAQ</a>
+                <a href="#">About Us</a>
                 <a href="/docs" target="_blank">API Docs</a>
             </ul>
             <div class="connexion">
                 <a class="btn-default" href="/login">Login</a>
                 <a class="btn-primary">Signup</a>
-
+                
             </div>
         </nav>
     </div>
     <main id="content" class="page-content">
         {% block content %}{% endblock %}
     </main>
-    <div id="footer">
+    <footer id="footer" class="footer">
         {% block footer %}
         <!-- &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>. -->
+        <div class="inner-footer">
+            <div class="foot-start">
+                <div class="left-side">
+                        <h2 class="heading-2">QR<span class="text-white">Smart</span></h2>
+                        <p>Instant QR code Integration</p>
+                </div>
+                <div class="right-side">
+                    <div class="links-ctn">
+                        <h5>SERVICES</h5>
+                        <ul>
+                            <a href="#">Create QR code</a>
+                            <a href="#">Prices</a>
+                            <a href="#">Other</a>
+                        </ul>
+                    </div>
+                    <div class="links-ctn">
+                        <h5>SERVICES</h5>
+                        <ul>
+                            <a href="#">Create QR code</a>
+                            <a href="#">Prices</a>
+                            <a href="#">Other</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="foot-line"/>
+            <div class="foot-end">
+                <div class="left-side">
+                    <p>2024 © QR Code Generator PRO S.L  - QRSmart</p>
+                </div>
+                <div class="right-side">
+                    <div>
+                        Currency
+                    </div>
+                    <div>
+                        Social
+                    </div>
+                </div>
+            </div>
+        </div>
         {% endblock %}
-    </div>
+    </footer>
 </body>
 </html>
