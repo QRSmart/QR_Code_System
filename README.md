@@ -4,7 +4,8 @@ The QR code generator backend
 ## Guide
 * Suivez l'exemple d'environnement .env.example
 * Entrer principale de l'application : *run.py*
-* Demmarage de l'API: `uvicorn run:app --reload`
+* Demmarage du frontend: `cd frondend && npm install && npm run start`
+* Demmarage de l'API: `python3 run.py`
 
 ## Description des fichiers
 
@@ -31,3 +32,5 @@ Dossier comportant toutes les logiques internes du system
 ### tests
 Dossier des test unitaires des codes
 
+### frontend
+Dossier contenant l'application QR Codes

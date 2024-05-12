@@ -7,6 +7,19 @@
 }
 
 
+@mixin ly-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin ly-flex-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 
 

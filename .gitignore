@@ -4,3 +4,4 @@ __pycache__
 **/.env
 **/qr_codes
 **/node_modules
+service-account.json

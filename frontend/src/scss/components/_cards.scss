@@ -1,0 +1,15 @@
+
+.card {
+    width: 300px;
+    height: 300px;
+    border-radius: $radius-button;
+    padding: $spacing-base;
+    @include ly-flex;
+    //align-items: flex-start;
+    gap: $spacing-xbase;
+    background-color: $qr-primary-shade;
+    box-shadow: $qr-shadow-primary;
+    &--white {
+        background-color: $qr-white;
+    }
+}

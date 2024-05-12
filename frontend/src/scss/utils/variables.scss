@@ -9,11 +9,20 @@ $f-family : 'Gabarito', sans-serif;
 $qr-black: #000;
 $qr-dark: #272B30;
 $qr-primary: #63CA04;
+$qr-primary-shade: #DFF2CD;
+$qr-gray-1: #F0F0F0;
 $qr-gray-3: #BABABA;
 $qr-gray-4: #737373;
 $qr-white: #FFF;
 $qr-background: #F8F9FA;
 $qr-dark-third: rgba(30, 31, 38, 1);
+
+$qr-shadow-primary: 0px 1px 15px 0px rgba(0,0,0,.05);
+$qr-shadow-btn: 0px 1px 15px 0px rgba(0,0,0,.05), 0px 0px 8px 0px rgba(17, 17, 26, .1);
+$qr-shadow-base: 0px 1px 0px 0px rgba(17, 17, 26, .1), 0px 8px 24px 0px rgba(17, 17, 26, .1), 0px 16px 48px 0px rgba(17, 17, 26, .1);
+$qr-shadow-static: 0px 1px 3px 0px rgba(0,0,0,.02), 0px 0px 0px 1px rgba(27, 31, 35, .15);
+
+
 $spacing-xbase: 10px;
 $spacing-base: 16px;
 $spacing-none: 0px;
@@ -23,3 +32,12 @@ $spacing-lg: 32px;
 $spacing-xlg: 40px;
 $spacing-md: 24px;
 $radius-button: 24px;
+
+
+// Responsive breakpoints
+
+$mobile : 468px;
+$tablets : 720px;
+$mid-screen : 960px;
+$desktop : 1024px;
+$extra-desktop : 1280px;
