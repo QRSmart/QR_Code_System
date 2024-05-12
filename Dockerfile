@@ -46,6 +46,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # Copy the source code into the container.
 COPY . .
 COPY python_env /app/.env
+COPY react_env /app/frontend/.env
 
 WORKDIR /app/web
 
