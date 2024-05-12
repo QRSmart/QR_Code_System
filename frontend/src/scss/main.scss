@@ -10,9 +10,11 @@
 
 @import "./components/button";
 @import "./components/input";
+@import "./components/cards";
 
+@import "./layout/app";
 @import "./layout/nav";
-//@import "./layout/sidebar";
+@import "./layout/sidebar";
 @import "./layout/footer";
 //@import "./layout/header";
 @import "./layout/container";
@@ -20,7 +22,9 @@
 
 
 @import "./pages/home";
+@import "./pages/dashboard";
 @import "./pages/signup";
 @import "./pages/login";
+
 
 

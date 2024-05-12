@@ -241,7 +241,7 @@ nav .connexion {
 /* Footer Design */
 footer {
     @apply px-20 py-8 flex justify-center items-center;
-    background-color: rgb(99, 202, 4, .5);
+    background-color: #63ca0480;
 
 }
 .footer .inner-footer {

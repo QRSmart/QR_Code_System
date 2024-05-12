@@ -36,8 +36,10 @@ class UsersCreate(UsersBase):
     """
         Schema a suivre pour les requetes d'utilisateur
     """
-    firstname : str
-    lastname : str
+    #firstname : str
+    #lastname : str
+    email: str
+    password: str
 
 
 class UsersScheme(PyBaseModel, UsersBase):

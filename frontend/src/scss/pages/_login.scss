@@ -4,25 +4,58 @@
     main {
         //padding: 0 $padding-section;
         height: 100vh;
-        @apply flex items-start justify-start;
+        @apply flex items-start justify-start overflow-hidden;
         color: $qr-white;
         .form-illus {
             background: $qr-primary;
             gap: $spacing-base;
         }
+        .form-illus img {
+            @apply -ml-40;
+        }
         .formCtn {
             padding: $spacing-xlg $spacing-base;
-            gap: 70px;
+            gap: 50px;
             .inner-form {
-                gap: $spacing-md;
+                gap: $spacing-base;
+                & a {
+                    color: $qr-primary;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
                 .formInput {
                     @apply flex flex-col items-start;
-                    gap: $spacing-base;
+                    gap: $spacing-xs;
+                    & .forgot{
+                        align-self: flex-end;
+                    }
+                    & label {
+                        padding-left: $spacing-xs;
+                    }
+                }
+                .submitInput {
+                    width: 300px;
+                    & button {
+                        width: 100%;
+                    }
+                }
+                & hr {
+                    width: 300px;
+                }
+                .google-signin {
+                    @apply flex gap-2;
+                    border-radius: $radius-button;
+                    border: 2px solid $qr-gray-1;
+                    padding: $spacing-sm $spacing-lg;
+                    &  img {
+                        width: 24px;
+                    }
+                    color: unset;
+                    
                 }
             }
-            .formInput {
-
-            }
+            
         }
     }
 }

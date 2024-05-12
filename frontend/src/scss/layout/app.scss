@@ -1,0 +1,21 @@
+.app-container {
+    width: 100%;
+    background-color: $qr-background;
+    min-height: 100%;
+}
+
+.app {
+    @include ly-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    @media screen and (max-width : $mobile) {
+        
+    }
+
+    .app-content {
+        width: 100%;
+        padding: $spacing-base;
+        @apply flex flex-col justify-start;
+        gap: $spacing-base;
+    }
+}

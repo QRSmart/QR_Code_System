@@ -1,22 +1,48 @@
 .navbar {
-    @apply flex w-full flex-col items-start;
-    padding: var(--spacing-xbase) 70px;
-    gap: var(--spacing-xbase, 10px);
+    @apply flex w-full flex-col items-start ;
+    // padding: var(--spacing-xbase) 70px;
+    // gap: var(--spacing-xbase, 10px);
     nav {
-        @apply flex justify-between items-center self-stretch;
+        @apply flex w-full justify-end items-center self-stretch ;
         h2 {
             @apply flex justify-center items-center;
             padding: 10px 0px;
             gap: 2px;
         }
         ul {
-            @apply flex items-center gap-2;
+            @apply flex items-center ;
+            gap: $spacing-sm;
+            & li  {
+                //@apply  border-red-500 border-2;
+                @include ly-flex;
+                padding: 0 $spacing-sm;
+            }
             a {
                 @apply flex flex-col justify-center items-center text-center;
-                padding: 5px 10px;
-                gap: var(--spacing-none);
-                color: var(--qr-gray-4);
+                
                 cursor: pointer;
+            }
+            .not-btn {
+                position: relative;
+                &::after {
+                    content: attr(data-count);
+                    position: absolute;
+                    width: 14px;
+                    height: 14px;
+                    border-radius: 50%;
+                    background-color: $qr-primary;
+                    color: $qr-white;
+                    top: -5px;
+                    right: 0;
+                    font-size: 12px
+                }
+            }
+            .user-profile-btn  {
+                background-color: $qr-primary-shade;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                @include ly-flex;
             }
         }
         .connexion {

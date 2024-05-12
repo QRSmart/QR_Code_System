@@ -1,0 +1,12 @@
+.dashboard-page {
+
+    .summary {
+        @include ly-flex;
+        gap: $spacing-lg;
+        .summary-ctn {
+            @include ly-flex-col;
+            gap: $spacing-xs;
+        }
+    }
+
+}

@@ -1,0 +1,59 @@
+.sidebar-app {
+    width: 200px;
+    height: 100vh;
+    padding: $spacing-base 0;
+    background-color: $qr-white;
+    @include ly-flex-col;
+    justify-content: flex-start;
+    gap: 70px;
+
+    .logo-ctn {
+        padding: $spacing-xbase 0;
+    }
+    .sidebar-item  {
+        @include ly-flex;
+        justify-content: flex-start;
+        padding: $spacing-xs $spacing-sm;
+        gap: $spacing-xs;
+        background-color: $qr-white;
+        color: $qr-black;
+        border-radius: $spacing-xs;
+        text-wrap: nowrap;
+        &--default {
+            &:hover {
+                background-color: $qr-primary-shade;
+            }
+        }
+        &--active {
+            background-color: $qr-primary-shade;
+        }
+        &--permanent {
+            color: $qr-white;
+            background-color: $qr-primary;
+        }
+    }
+    .menu-ctn {
+        @include ly-flex-col;
+        justify-content: flex-start;
+        padding: 0 $spacing-md;
+        gap: $spacing-md;
+        & .action-item {
+            & > button {
+                border-radius: $radius-button;
+            }
+        }
+
+        & .nav-items {
+            //outline: 2px solid red;
+            @include ly-flex-col;
+            align-items: flex-start;
+            gap: $spacing-base;
+            & > li {
+                width: 100%;
+                a {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

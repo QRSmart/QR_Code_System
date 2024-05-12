@@ -41,3 +41,13 @@
 .border-1 {
     border-width: 1px;
 }
+
+.debug {
+    @apply border-2 border-red-500;
+
+}
+
+.pages-app {
+    @apply flex flex-col justify-start;
+    gap: $spacing-base;
+}

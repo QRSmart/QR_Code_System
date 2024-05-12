@@ -7,4 +7,7 @@
     gap: $spacing-xbase;
     border-radius: $radius-button;
     border: 1px solid $qr-gray-3;
+    &:focus {
+        border-color: $qr-primary;
+    }
 }

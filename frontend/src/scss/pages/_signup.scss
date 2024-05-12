@@ -1,23 +1,64 @@
 
 .signup-page {
-    $padding-section : 3rem;
+
     main {
-        padding: 0 $padding-section;
-        height: 80vh;
-        @apply flex items-center justify-center;
-
+        //padding: 0 $padding-section;
+        height: 100vh;
+        @apply flex items-start justify-start overflow-hidden;
+        color: $qr-white;
+        .form-illus {
+            background: $qr-primary;
+            gap: $spacing-base;
+        }
+        .form-illus img {
+            @apply -ml-40;
+        }
         .formCtn {
-            @apply  h-4/5 p-5 flex flex-col gap-6 items-center;
-            & > h1 {
-                font-family: $f-family;
-                @apply text-3xl;
-            }
-            .formInput {
-
-                input {
-                    @apply outline outline-slate-400 p-2 pl-4 rounded-lg
+            padding: $spacing-xlg $spacing-base;
+            gap: 50px;
+            .inner-form {
+                gap: $spacing-base;
+                & a {
+                    color: $qr-primary;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+                .formInput {
+                    @apply flex flex-col items-start;
+                    gap: $spacing-xs;
+                    & .forgot{
+                        align-self: flex-end;
+                    }
+                    & label {
+                        padding-left: $spacing-xs;
+                    }
+                }
+                .submitInput {
+                    width: 300px;
+                    & button {
+                        width: 100%;
+                    }
+                }
+                & hr {
+                    width: 300px;
+                }
+                .google-signin {
+                    @apply flex gap-2;
+                    border-radius: $radius-button;
+                    border: 2px solid $qr-gray-1;
+                    padding: $spacing-sm $spacing-lg;
+                    &  img {
+                        width: 24px;
+                    }
+                    color: unset;
+                    
+                }
+                .terms {
+                    max-width: 350px;
                 }
             }
+            
         }
     }
 }
