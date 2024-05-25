@@ -1,6 +1,6 @@
 fastapi[all]
 configparser
-MySQL-python
+mysqlclient
 uvicorn
 sqlalchemy
 qrcode[pil]
