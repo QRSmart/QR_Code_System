@@ -50,7 +50,7 @@ class QRCodes(BaseModel, Base):
     qrcode_type: Mapped[QRTypes]
     filename: Mapped[str] = mapped_column(String(255), nullable=True)
     qrcode_link: Mapped[str] = mapped_column(String(255), nullable=True)
-    design : Mapped[Optional[str]] = mapped_column(type_=JSON, nullable=True)
+    design : Mapped[dict] = mapped_column(JSON, default='{}', nullable=True)
     
     def __init__(self, props = None):
         """
