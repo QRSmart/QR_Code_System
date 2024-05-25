@@ -1,5 +1,5 @@
 fastapi[all]
-mysqldb
+MySQL-python
 uvicorn
 sqlalchemy
 qrcode[pil]
