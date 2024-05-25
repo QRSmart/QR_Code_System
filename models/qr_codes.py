@@ -5,7 +5,7 @@ QR_Codes Class from Models Module
 from typing import Literal, Union, Optional
 from models.base import BaseModel, Base, PyBaseModel
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, JSON
+from sqlalchemy import Column, Integer, String, Text, Float, ForeignKey, JSON
 from sqlalchemy.orm import Mapped, mapped_column
 from uuid import uuid4
 from pydantic import BaseModel as PydanticBaseModel
@@ -50,7 +50,8 @@ class QRCodes(BaseModel, Base):
     qrcode_type: Mapped[QRTypes]
     filename: Mapped[str] = mapped_column(String(255), nullable=True)
     qrcode_link: Mapped[str] = mapped_column(String(255), nullable=True)
-    design : Mapped[dict] = mapped_column(JSON, default='{}', nullable=True)
+    #design : Mapped[dict] = mapped_column(JSON, default='{}', nullable=True)
+    design : Mapped[str] = mapped_column(Text, default='{}', nullable=True)
     
     def __init__(self, props = None):
         """
